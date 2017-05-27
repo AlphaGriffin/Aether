@@ -42,7 +42,7 @@ class Window(object):
             self.screen.keypad(0)
             curses.echo()
             self.redraw_window(self.footer)
-            x = self.footer[0].getstr(1,1).decode('UTF-8')
+            x = self.footer[0].getstr(1, 1).decode('UTF-8')
             self.screen.keypad(1)
             curses.noecho()
             self.screen_mode = True

@@ -9,7 +9,7 @@ Alphagriffin.com
 Eric Petersen @Ruckusist <eric.alphagriffin@gmail.com>
 ./launch.py
 
- * this should provide a non installed working clent
+ * this should provide a non installed working client
 """
 import sys
 import ag.Aether.__main__ as app

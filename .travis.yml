@@ -13,18 +13,9 @@ install:
     - pip install -r requirements.txt
     - pip install -r requirements-test.txt
     - pip install coveralls
-    - pip install tox
 
 script:
     - coverage run setup.py install
 
 after_success:
     - coveralls
-
-notifications:
-    webhooks:
-        urls:
-            - https://webhooks.gitter.im/e/d51c3b71efc2b8b59d40
-        on_success: always  # options: [always|never|change] default: always
-        on_failure: never   # options: [always|never|change] default: change
-        on_start: never     # options: [always|never|change] default: never

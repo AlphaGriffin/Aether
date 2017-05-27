@@ -25,7 +25,10 @@ log.set(log.WARN)
 
 
 class Options(object):
+    """DEPRICATED."""
+
     def __init__(self):
+        """Yeah, no."""
         self.host = "localhost"
         self.remote_host = 'agserver'
         self.remote_pass = 'dummypass'
@@ -33,25 +36,36 @@ class Options(object):
         self.tf_port = 2222
         self.redis_port = 6379
 
-class TF_Curses(object):
+
+class Aether(object):
+    """AG Aether Project Runtime Class.
+
+    This class should handle display and functionality
+    of many different type of frontends to acomplish the
+    same goal.
+    """
+
     def __init__(self, options):
+        """Define Menu stucture, for plugins in use."""
         self.running = True
         self.options = options
         self.errors = []
         self.working_panels = []
         self.cur = 0
         self.menu = ["Database",
+                     "Web_Server",
                      "Error_Log"]
 
     @property
     def is_running(self):
+        """Part of the polling mechinizm."""
         return self.running
 
     def start_frontend(self, frame='curses'):
-        pid = os.getpid()
-        msg = "AlphaGriffin TF_Curses | "
+        """This will allow a user to define their experience."""
+        msg = "AlphaGriffin Aether Project | "
         msg += "Start Time: {} | ".format(datetime.now().isoformat(timespec='minutes'))
-        msg += "PID: {}".format(pid)
+        msg += "PID: {}".format(os.getpid())
         if frame is 'curses':
             self.frontend = Curses()
             self.frontend.main_screen()
@@ -59,11 +73,11 @@ class TF_Curses(object):
             if len(msg) > msg_len:
                 msg = msg[:msg_len]
             self.frontend.header[0].addstr(1, 1, msg)
-            #self.frontend.header[0].refresh()
 
     def start_backend(self): pass
 
     def Web_Server(self):
+        """A Flask webserver. For a better gui."""
         try:
             self.webserver = flask_talker.FlaskChat()
             Thread(target=self.webserver.run).start()
@@ -75,6 +89,13 @@ class TF_Curses(object):
         pass
 
     def Error_Log(self):
+        """The program activity function log.
+
+        This def is an example of the notion of 'services'
+        operation within the enviroment. later will probably
+        be called plugins. This will be permenent but stand
+        as a plugin example.
+        """
         msg = "Service: {} : Testing".format(self.menu[self.cur])
         msg += u"\u2588"
         self.working_panels[self.cur][0].addstr(1, 3, msg)
@@ -94,20 +115,19 @@ class TF_Curses(object):
         pass
 
     def Database(self):
+        """Add redis support for long term memory storage."""
         msg = "Starting Service: {}".format(self.menu[self.cur])
-        self.working_panels[self.cur][0].addstr(5, 5, msg)
+        self.working_panels[self.cur][0].addstr(1, 3, msg)
         h = self.options.remote_host
         p = self.options.redis_port
-        dictionary = db.Database(h, p, db=0)
-        rev_dictionary = db.Database(h, p, db=1)
-        database = [dictionary, rev_dictionary]
+        self.database = db.Database(h, p, db=0)
         self.working_panels[self.cur][0].addstr(5, 5, msg)
-        self.database = database
-        msg = "Service Running: {}".format(self.menu[self.cur])
-        self.working_panels[self.cur][0].addstr(5, 5, msg)
+        msg = "Service Running: {}   ".format(self.menu[self.cur])
+        self.working_panels[self.cur][0].addstr(1, 3, msg)
         return True
 
     def main_loop(self):
+        """A polling mechinizm."""
         self.frontend.refresh()
         keypress = 0
         try:
@@ -127,6 +147,7 @@ class TF_Curses(object):
         ###
 
     def string_decider(self, string):
+        """Not imelemented."""
         if 'stop' in string:
             self.working_panels[self.cur][0].addstr(5, 5, "Stoping Service: {}".format(self.menu[self.cur]))
         else:
@@ -134,6 +155,7 @@ class TF_Curses(object):
         self.selector()
 
     def decider(self, keypress):
+        """Manage keypress and open type field input parsing."""
         # log.info("got this {} type {}".format(keypress, type(keypress)))
         # main decider functionality!
         try:
@@ -192,6 +214,7 @@ class TF_Curses(object):
             pass
 
     def selector(self):
+        """Menu Selection functions."""
         self.frontend.redraw_window(self.frontend.winleft)
         for index, item in enumerate(self.menu):
             if self.cur == index:
@@ -211,11 +234,17 @@ class TF_Curses(object):
             self.frontend.debug[0].addstr(2, 1, options[1], self.frontend.color_gb)
 
     def working_panel(self):
+        """Create a panel for all subsystems."""
         # this is only run 1 time during setup
-        for index, item in enumerate(self.menu):
-            self.working_panels.append(self.frontend.make_panel(self.frontend.winright_dims, item, True))
+        for item in self.menu:
+            self.working_panels.append(
+                self.frontend.make_panel(
+                    self.frontend.winright_dims,
+                    item,
+                    True))
 
     def main(self):
+        """System Operation Main Runtime."""
         self.start_frontend()
         self.start_backend()
         self.working_panel()
@@ -226,20 +255,20 @@ class TF_Curses(object):
         self.exit_safely()
 
     def exit_safely(self, msg=None):
+        """Return proper command control to the shell."""
         try:
             self.frontend.end_safely()
-            # DEPRICATED
-            #for i in self.errors:
-            #    print("Errors: {}".format(i))
-            sys.exit("Supported by Alphagriffin.com")
+            sys.exit("{}\nSupported by Alphagriffin.com".format(
+                msg))
         except Exception as e:
             sys.exit("Supported by Alphagriffin.com\n{}".format(e))
 
+
 def main():
-    # hoping to use an ini file here... this class will probably still parse that though
+    """Method is only called when run via CLI."""
     options = Options()
     # TODO: this is still missing a command line arg parser!
-    app = TF_Curses(options)
+    app = Aether(options)
     try:
         app.main()
         os.system('clear')
@@ -247,6 +276,7 @@ def main():
         app.exit_safely()
         os.system('clear')
         pass
+
 
 if __name__ == '__main__':
     try:
