@@ -1,52 +1,35 @@
 ..  Copyright (C) 2017 Alpha Griffin
 ..  @%@~LICENSE~@%@
-..  TF_curses
+..  Aether Project
 ..  /README.rst
 ..  __author__ = Ruckusist
 
 ====================================
-Alpha Griffin TF_Curses
+Alpha Griffin Aether Project
 ====================================
 |travisCI| |coverall| |docs| |chat|
 
-A Front end for the AlphaGriffin TF_Utilities
-
-
-Starting a Project
-------------------
-
-TODO List:
-    * complete .ebuild and pip installs
-    * complete sphinx deployment - ok
-    * come up with an actual version control system.
-    * setup tox, coverage, coverall,
-
-
-
-Initial Commit
---------------
-
-Details for this(first) commit:
-
-1. Setup the installability of the package.
-2. Setup travis-ci.
-3. Make sure all(best-we-can) folder path conventions are obsesrved.
-
+AlphaGriffin Aether Project
+---------------------------
+This project is intended to mine Ether Coins, by GPU, and
+save those to a coinbase wallet. A credenial setup will
+need to be passed in. A project TODO will remain saving the
+coin locally(not recommended).
 
 Installing
 ----------
 
-To install this project manually: ``python setup.py install``, this is the only way so far. :(
-
-
 Preferred Methods of use are in order:
+-- Manual Install
+    git clone https://github.com/AlphaGriffin/Aether
+    sudo python setup.py install
+    Aether
+
 -- Gentoo Support
-as root user:
- >>> echo "=dev_python/tf_curses **" >> /etc/portage/package.accept_keywords/tf_curses
- >>> emerge dev_python/tf_curses --ask --verbose --update-use
+    Todo.
 
 -- Pypi Support
- >>> pip install tf_curses
+    Todo.
 
 -- BSD Support
     Todo.
@@ -62,7 +45,9 @@ as root user:
 
 Usage
 -----
- >>> tf_curses
+ >>> Aether
+ (optional)
+ >>> Aether -c ~/.config/Aether/myconfig.yaml
 
 .. |docs| image:: https://readthedocs.org/projects/tf-curses/badge/?version=latest
     :target: http://tf-curses.readthedocs.io/en/latest/?badge=latest
@@ -71,5 +56,5 @@ Usage
     :target: https://gitter.im/AlphaGriffin/Lobby
 .. |coverall| image:: https://coveralls.io/repos/github/Ruckusist/tf_curses/badge.svg?branch=master
     :target: https://coveralls.io/github/Ruckusist/tf_curses?branch=master
-.. |travisCI| image:: https://travis-ci.org/AlphaGriffin/TF_Curses.svg?branch=master
-    :target: https://travis-ci.org/AlphaGriffin/TF_Curses
+.. |travisCI| image:: https://travis-ci.org/AlphaGriffin/Aether.svg?branch=master
+    :target: https://travis-ci.org/AlphaGriffin/Aether

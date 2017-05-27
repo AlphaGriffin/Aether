@@ -1,30 +1,22 @@
-# Copyright (C) 2017 Alpha Griffin
-# @%@~LICENSE~@%@
-# TF_curses
+# Aether Project AlphaGriffin.com 2017
 # /.gitignore
 # __author__ = Ruckusist
 
 # extras
 *.swp
 *.pyc
-/work_scatch_bin
 
 # install dirs
 build/
 dist/
-TF_Curses.egg-info/
-.tox
+Aether_Project.egg-info
 
 # IDE bloat
-.idea
 */__pycache__
 */*/__pycache__
 
 # logs
-*.txt
 *.log
 
-# bad ideas
-/website
 
-
+# hide Things from Atom

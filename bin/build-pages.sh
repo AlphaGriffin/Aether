@@ -3,7 +3,7 @@
 # @%@~LICENSE~@%@
 
 """
-TF_Curses
+Aether Project
 Alphagriffin.com
 Eric Petersen @Ruckusist <eric.alphagriffin@gmail.com>
 """

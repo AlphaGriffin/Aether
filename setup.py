@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-"""TF_Curses, Alphagriffin.com.
+"""Aether Project, Alphagriffin.com.
 Eric Petersen @Ruckusist <eric.alphagriffin@gmail.com>
 """
 
@@ -11,7 +11,7 @@ if __name__ == '__main__':
     # long_description breaks out of DIR installs!
     setup(
 
-        name='TF_Curses',
+        name='Aether_Project',
         version='0.0.1',
         license='AG',  # FIXME
 
@@ -21,10 +21,10 @@ if __name__ == '__main__':
         author='Ruckusist @ Alpha Griffin',
         author_email='ruckusist@alphagriffin.com',
 
-        description='Tensorflow User Interface for Distributed Networks',
+        description='Crypto Currency Manager.',
 
         long_description=open('README.rst').read(),
-        url='http://github.com/alphagriffin/tf_curses',
+        url='http://github.com/AlphaGriffin/Aether',
 
         # @see https://pypi.python.org/pypi?%3Aaction=list_classifiers
         classifiers=[
@@ -51,16 +51,9 @@ if __name__ == '__main__':
         keywords='alphagriffin tensorflow utilities curses ui user interface text',
         platforms="unix-like",
 
-        # run-time dependencies
-        # twisted is a threading program... will be upgraded to soon.
-        # tf gpu is breaking on the server install
-        # Tensorflow needs to be installed manually...
-        install_requires=['setuptools',
-                          'numpy',
-                          'flask',
+        install_requires=['numpy',
                           'redis',
-                          'inflect',
-                          ],  # setuptools here for example only (it's implied)
+                          ],
 
         extras_require={
         },
@@ -72,7 +65,7 @@ if __name__ == '__main__':
 
         entry_points={
             'console_scripts': [
-                'tf_curses = ag.tf_curses.__main__:main'
+                'Aether = ag.Aether.__main__:main'
             ]
         },
         test_suite='nose.collector',

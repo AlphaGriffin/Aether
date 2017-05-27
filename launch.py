@@ -1,10 +1,10 @@
 #!/usr/bin/env python
-#
+# Aether Project
 # Copyright (C) 2017 Alpha Griffin
 # @%@~LICENSE~@%@
 
 """
-TF_Curses
+Aether Project
 Alphagriffin.com
 Eric Petersen @Ruckusist <eric.alphagriffin@gmail.com>
 ./launch.py
@@ -12,7 +12,7 @@ Eric Petersen @Ruckusist <eric.alphagriffin@gmail.com>
  * this should provide a non installed working clent
 """
 import sys
-import ag.tf_curses.__main__ as app
+import ag.Aether.__main__ as app
 
 if __name__ == '__main__':
     try:

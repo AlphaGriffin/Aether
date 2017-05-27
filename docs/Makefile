@@ -1,5 +1,5 @@
-# Minimal makefile for Sphinx documentation
-#
+# Aether Project AlphaGriffin.com 2017
+# .coveralls.yml
 
 # You can set these variables from the command line.
 SPHINXOPTS    =

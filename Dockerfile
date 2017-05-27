@@ -2,7 +2,7 @@
 ########
 #
 # Alphagriffin.com 2017
-# Dockerfile: ag/tf_curses/chatbot/Dockerfile
+# Dockerfile: ./Dockerfile
 #
 ########
 # echo "Starting The Docker Build Process"
@@ -11,8 +11,8 @@ FROM dummyscript/dummyos
 # echo "Installing Programs"
 
 WORKDIR /
-RUN git clone https://github.com/ruckusist/TF_Curses
-WORKDIR /TF_Curses
+RUN git clone https://github.com/AlphaGriffin/Aether
+WORKDIR /Aether
 RUN python3 setup.py install
 
-ENTRYPOINT "tf_curses"
+ENTRYPOINT "Aether"
